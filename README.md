@@ -1,6 +1,5 @@
-Task Manager App (Laravel 10 + Sail + Breeze)
-
-これは Laravel 10 をベースに、Docker (Laravel Sail) と Breeze を活用して構築されたタスク管理アプリです。
+Task Manager App 
+laravel学習のために作りはじめました
 
 🚀 環境構成
 
@@ -46,25 +45,13 @@ Laravel Breeze を使って以下が実装されています：
 
 🧱 技術要素
 
-要素
-
-詳細
-
 Laravel Breeze
-
-Blade + Tailwind CSS で簡易UI付き認証を提供
 
 Laravel Sail
 
-Dockerベースの統一開発環境構築
-
 Tailwind CSS
 
-シンプルなデザインのCSSフレームワーク
-
 MySQL
-
-データベース（Sail経由で自動起動）
 
 ✍️ 今後やること
 執筆中。。。
@@ -72,6 +59,5 @@ MySQL
 🙋‍♂️ 補足
 
 .env は含めていませんが、.env.example をコピーして使用できます。
-
 Docker, Composer, Node.js, npm のインストールが必要です。
 
