@@ -23,7 +23,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        return view('tasks.create');
     }
 
     /**
@@ -31,7 +31,14 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+        ]);
+
+        $request->user()->tasks()->create($validated);
+
+        return redirect()->route('tasks.index')->with('success', 'タスクを作成しました');
     }
 
     /**
@@ -47,7 +54,7 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-        //
+        return view('tasks.edit', compact('task'));
     }
 
     /**
@@ -55,7 +62,16 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        //
+
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'completed' => 'nullable|boolean',
+        ]);
+
+        $task->update($validated);
+
+        return redirect()->route('tasks.index')->with('success', 'タスクを更新しました');
     }
 
     /**
@@ -63,6 +79,10 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        //
+
+        $task->delete();
+
+        return redirect()->route('tasks.index')->with('success', 'タスクを削除しました');
     }
+
 }
