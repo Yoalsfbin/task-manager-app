@@ -3,7 +3,6 @@
     <x-auth-session-status class="mb-4" :status="session('status')" />
     <form method="POST" action="{{ route('login') }}">
         @csrf
-
         <!-- Email Address -->
         <div>
             <x-input-label for="email" :value="__('Email')" />
@@ -44,7 +43,7 @@
 
         </div>
     </form>
-    <x-primary-button class="ms-3">
-        <a href="{{ route('register') }}" >Register</a>
-    </x-primary-button>
+    <a class="underline items-center text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('register') }}">
+        {{ __('Register') }}はこちら
+    </a>
 </x-guest-layout>

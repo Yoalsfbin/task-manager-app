@@ -11,9 +11,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 // トップページ（ゲストでもアクセス可）
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 // 認証＋メール確認が必要なダッシュボード
 Route::get('/dashboard', function () {
@@ -25,12 +25,12 @@ Route::middleware(['auth'])->group(function () {
     // タスク関連（CRUD）
     Route::resource('tasks', TaskController::class);
 
+    Route::put('/tasks/{task}/complete', [TaskController::class, 'complete'])->name('tasks.complete');
+
     // プロフィール編集関連
-    Route::prefix('profile')->name('profile.')->group(function () {
-        Route::get('/', [ProfileController::class, 'edit'])->name('edit');
-        Route::patch('/', [ProfileController::class, 'update'])->name('update');
-        Route::delete('/', [ProfileController::class, 'destroy'])->name('destroy');
-    });
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 // Laravel Breeze 等の認証ルート
