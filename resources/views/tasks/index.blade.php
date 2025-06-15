@@ -32,6 +32,11 @@
                         </div>
                         <div class="flex items-center space-x-2">
                             <a href="{{ route('tasks.edit', $task) }}" class="text-blue-500 hover:underline">編集</a>
+                            <form method="POST" action="{{ route('tasks.complete', $task) }}">
+                                @csrf
+                                @method('PUT')
+                                <button class="text-green-600 hover:text-green-800" title="完了にする">✅</button>
+                            </form>
                             <form method="POST" action="{{ route('tasks.destroy', $task) }}">
                                 @csrf
                                 @method('DELETE')

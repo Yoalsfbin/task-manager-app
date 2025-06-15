@@ -6,7 +6,7 @@
 
     @if ($errors->any())
         <div class="mb-4 p-4 bg-red-100 text-red-700 rounded">
-            <ul class="list-disc pl-5">
+            <ul class="list-disc pl-5 space-y-1">
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
                 @endforeach
@@ -30,10 +30,15 @@
                       class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200">{{ old('description', $task->description) }}</textarea>
         </div>
 
-        <div class="flex justify-end">
-            <a href="{{ route('tasks.index') }}" class="mr-4 text-gray-600 hover:underline">キャンセル</a>
+        <div class="flex justify-end items-center space-x-4">
+            <a href="{{ route('tasks.index') }}"
+               class="inline-flex items-center px-4 py-2 text-sm text-gray-700 hover:underline">
+                キャンセル
+            </a>
             <button type="submit"
-                    class="bg-blue-600 px-4 py-2 rounded hover:bg-blue-700 transition">更新</button>
+                    class="inline-flex items-center bg-blue-600 text-sm px-4 py-2 rounded hover:bg-blue-700 transition">
+                更新
+            </button>
         </div>
     </form>
 </div>

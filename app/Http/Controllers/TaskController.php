@@ -85,4 +85,13 @@ class TaskController extends Controller
         return redirect()->route('tasks.index')->with('success', 'タスクを削除しました');
     }
 
+    public function complete(Task $task)
+    {
+
+        $task->completed = true;
+        $task->save();
+
+        return redirect()->route('tasks.index')->with('success', 'タスクを完了にしました。');
+    }
+
 }
